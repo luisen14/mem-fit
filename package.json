@@ -2,18 +2,28 @@
   "name": "mem-fit",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
+  "main": "./electron/main.js",
   "dependencies": {
+    "concurrently": "^5.3.0",
+    "electron": "^11.0.2",
+    "electron-builder": "^22.9.1",
+    "electron-is-dev": "^1.2.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "^4.0.0",
     "semantic-ui-css": "^2.2.12",
-    "semantic-ui-react": "^2.0.1"
+    "semantic-ui-react": "^2.0.1",
+    "wait-on": "^5.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "ebuild": "npm run build && node_modules/.bin/build",
+    "dev": "concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "erun": "electron ."
   },
   "browserslist": {
     "production": [
